@@ -43,7 +43,31 @@ def find_pdf_files(directory):
     - Sort the list alphabetically
     - If no PDFs found, print error and return empty list
     """
-    pass
+    #get all files
+    all_items = os.listdir(directory)
+
+    # create an empty list to collect all the files
+    pdf_files = []
+
+    #loop through the all_items and add the PDFs to the pdf_files list
+    for item in all_items:
+        if item.lower().endswith('.pdf'): #check lowercase version
+            pdf_files.append(item) # add to the list
+
+    # sort the files
+    pdf_files.sort()
+
+    #check if empty
+    if len(pdf_files) == 0:
+        print("No PDF files found in directory")
+        return []
+    
+    # return the list
+    return pdf_files
+    
+    
+
+
 
 
 def display_and_select_files(pdf_list):
@@ -148,5 +172,5 @@ def main():
 
 
 if __name__ == "__main__":
-    test_dir = get_directory()
-    print(f"Directory selected: {test_dir}")
+    pdfs = find_pdf_files(".")
+    print(f"Found PDFs: {pdfs}")
