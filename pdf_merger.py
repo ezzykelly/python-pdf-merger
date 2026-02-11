@@ -20,7 +20,11 @@ def get_directory():
     - Otherwise, return the path they entered
     - Strip any extra whitespace from input
     """
-    pass
+    directory = input("Enter directory path (or press Enter for current directory): ").strip()
+    if directory == "":
+        return os.getcwd()
+    else:
+        return directory  
 
 
 def find_pdf_files(directory):
@@ -144,4 +148,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    test_dir = get_directory()
+    print(f"Directory selected: {test_dir}")
